@@ -31,5 +31,6 @@ namespace CRM.Model
         [Display(Name = "Bölge")]
         public Guid RegionId { get; set; }
 
+        public virtual Region Region { get; set; }
     }
 }

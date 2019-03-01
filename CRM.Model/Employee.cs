@@ -25,6 +25,9 @@ namespace CRM.Model
         [Display(Name = "Adres")]
         public string Address { get; set; }
 
+        [Display(Name = "Statü")]
+        public Status Status{ get; set; }
+
 
     }
 }

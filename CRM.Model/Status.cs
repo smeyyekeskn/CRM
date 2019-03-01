@@ -9,4 +9,5 @@ namespace CRM.Model
         [Display(Name = "Aday Müşteri")]
         CandidateCustomer = 2
     }
+
 }

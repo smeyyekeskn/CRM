@@ -25,5 +25,6 @@ namespace CRM.Model
 
         [Display(Name = "Aktif Mi ?")]
         public bool IsActive { get; set; }
+
     }
 }

@@ -9,6 +9,7 @@ namespace CRM.Model
 {
     public enum UserType
     {
+
         [Display(Name = "Yönetici")]
         Admin = 1,
         [Display(Name = "Personel")]
