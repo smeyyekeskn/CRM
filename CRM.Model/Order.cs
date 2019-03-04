@@ -16,8 +16,20 @@ namespace CRM.Model
         [Display(Name = "İstenen Tarih")]
         public DateTime RequiredDate { get; set; }
 
-        [Display(Name = "Sevk Tarihi")]
-        public DateTime ShippedDate { get; set; }
+        [Display(Name = "Banka Adı")]
+        public string Name { get; set; }
+
+        [Display(Name = "Iban")]
+        public string Iban { get; set; }
+
+        [Display(Name = "Satış Fiyatı")]
+        public decimal SellingPrice { get; set; }
+
+        [Display(Name = "Miktar")]
+        public decimal Quantity { get; set; }
+
+        [Display(Name = "Tutar")]
+        public decimal Amount { get { return SellingPrice * Quantity;} }
 
         [Display(Name = "Ürün")]
         public Guid ProductId { get; set; }

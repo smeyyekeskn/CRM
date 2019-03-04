@@ -9,6 +9,8 @@ namespace CRM.Model
 {
     public class Employee:BaseEntity    
     {
+        [Display(Name ="TC Kimlik No")]
+        public string IdentityNumber { get; set; }
 
         [Display(Name = "Ad")]
         public string FirstName { get; set; }
@@ -19,6 +21,9 @@ namespace CRM.Model
         [Display(Name = "Telefon")]
         public string Phone { get; set; }
 
+        [Display(Name = "Doğum Tarihi")]
+        public DateTime Birthdate { get; set; } 
+
         [Display(Name = "E-Posta")]
         public string Email { get; set; }
 
@@ -26,7 +31,11 @@ namespace CRM.Model
         public string Address { get; set; }
 
         [Display(Name = "Statü")]
-        public Status Status{ get; set; }
+        public CustomerStatusType Status{ get; set; }
+
+        [Display(Name ="Teklif")]
+        public Guid OfferId { get; set; }
+        public virtual ICollection<Offer> Offers { get; set; }
 
 
     }

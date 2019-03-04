@@ -21,10 +21,7 @@ namespace CRM.Model
         public string UpdatedBy { get; set; }
 
         [Display(Name = "Güncellenme Tarihi")]
-        public DateTime UpdatedAt { get; set; }
-
-        [Display(Name = "Aktif Mi ?")]
-        public bool IsActive { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
     }
 }
