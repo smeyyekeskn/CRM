@@ -42,8 +42,8 @@ namespace CRM.Model
         public Guid OfferId { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
 
-        [Display(Name = "Ürün")]
-        public Guid ProductId { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        [Display(Name = "Müşteri")]
+        public Guid CustomerId { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

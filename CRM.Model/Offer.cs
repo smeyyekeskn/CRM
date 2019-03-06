@@ -12,7 +12,6 @@ namespace CRM.Model
         public Offer()
         {
             new HashSet<Product>();
-            new HashSet<Employee>();
         }
         [Display(Name ="Açıklama")]
         public string Description { get; set; }

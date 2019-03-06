@@ -38,13 +38,13 @@ namespace CRM.Model
         [Display(Name ="Statü")]
         public CustomerStatusType Status { get; set; }
 
-        [Display(Name = "Ürün")]
-        public Guid ProductId { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
-
         [Display(Name = "Bölge")]
         public Guid RegionId { get; set; }
         public virtual Region Region { get; set; }
+
+        [Display(Name = "Ürün")]
+        public Guid ProductId { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
 
         [Display(Name = "Teklif")]
         public Guid OfferId { get; set; }
