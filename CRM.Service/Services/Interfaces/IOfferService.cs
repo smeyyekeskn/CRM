@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,11 @@ namespace CRM.Service.Services.Interfaces
 {
     public interface IOfferService
     {
+        void Insert(Offer entity);
+        void Update(Offer entity);
+        void Delete(Offer entity);
+        void Delete(Guid id);
+        Offer Find(Guid id);
+        IEnumerable<Offer> GetAll();
     }
 }

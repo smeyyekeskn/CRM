@@ -34,16 +34,8 @@ namespace CRM.Model
         public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        [Display(Name = "Sipariş")]
-        public Guid OrderId { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-
-        [Display(Name = "Teklif")]
-        public Guid OfferId { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
-
-        [Display(Name = "Müşteri")]
-        public Guid CustomerId { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
     }
 }

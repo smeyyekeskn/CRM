@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CRM.Data.Builders
 {
     public class RegionBuilder
-    {
+    { 
         public RegionBuilder(EntityTypeConfiguration<Region> entity)
         {
             entity.Property(p => p.Name).IsRequired().HasMaxLength(100);

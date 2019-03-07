@@ -27,8 +27,6 @@ namespace CRM.Model
         public Guid EmployeeId { get; set; }
         public virtual Employee Employee{ get; set; }
 
-        [Display(Name = "Ürün")]
-        public Guid ProductId { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 }

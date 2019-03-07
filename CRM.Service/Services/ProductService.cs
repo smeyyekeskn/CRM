@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRM.Service
+namespace CRM.Service 
 {
     public class ProductService: IProductService
     {
@@ -62,8 +62,8 @@ namespace CRM.Service
             var product = productRepository.Find(entity.Id);
             product.Name = entity.Name;
             product.CategoryId = entity.CategoryId;
-            product.CustomerId = entity.CustomerId;
-            product.OfferId = entity.OfferId;
+            product.Customers = entity.Customers;
+            product.Offers = entity.Offers;
             product.Description = entity.Description;
             product.SerialNumber = entity.SerialNumber;
             product.Stock = entity.Stock;

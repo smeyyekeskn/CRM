@@ -31,9 +31,6 @@ namespace CRM.Model
         [Display(Name = "Tutar")]
         public decimal Amount { get { return SellingPrice * Quantity;} }
 
-        [Display(Name = "Ürün")]
-        public Guid ProductId { get; set; }
-
         public virtual ICollection<Product>Products { get; set; }
 
     }

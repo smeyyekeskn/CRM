@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CRM.Service
-{
+{ 
     public class CategoryService: ICategoryService
     {
         private readonly IRepository<Category> categoryRepository;
@@ -61,7 +61,7 @@ namespace CRM.Service
         {
             var category = categoryRepository.Find(entity.Id);
             category.Name = entity.Name;
-            category.ProductId = entity.ProductId;
+            category.Products = entity.Products;
             categoryRepository.Update(category);
             unitOfWork.SaveChanges();
         }

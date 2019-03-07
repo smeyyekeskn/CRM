@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRM.Data.Builders
+namespace CRM.Data.Builders 
 {
     public class CustomerBuilder
     {
         public CustomerBuilder(EntityTypeConfiguration<Customer> entity)
         {
-            entity.HasKey(e => e.Id);
             entity.Property(e => e.IdentityNumber).IsRequired().HasMaxLength(100);
             entity.Property(e => e.FirstName).IsRequired().HasMaxLength(100);
             entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);

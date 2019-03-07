@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Service.Services.Interfaces
 {
-    public interface IProductService
+    public interface IProductService 
     {
         void Insert(Product entity);
         void Update(Product entity);

@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRM.Data.Builders
+namespace CRM.Data.Builders 
 {
     public class CategoryBuilder
     {
         public CategoryBuilder(EntityTypeConfiguration<Category> entity)
         {
-            entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
         }
     }

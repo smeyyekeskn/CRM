@@ -16,12 +16,8 @@ namespace CRM.Model
         }
         [Display(Name="Bölge Adı")]
         public string Name { get; set; }
-        [Display(Name = "Müşteri")]
-        public Guid CustomerId { get; set; }
-        public virtual ICollection<Customer> Customers { get; set; }
 
-        [Display(Name = "Çalışan")]
-        public Guid EmployeeId { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
         public virtual ICollection<Employee> Employees{ get; set; }
     }
 }

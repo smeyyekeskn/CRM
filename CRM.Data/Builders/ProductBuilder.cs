@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace CRM.Data.Builders
 {
-    public class ProductBuilder
+    public class ProductBuilder 
     {
         public ProductBuilder(EntityTypeConfiguration<Product> entity)
         {
-            entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
             entity.Property(e => e.SerialNumber).IsRequired().HasMaxLength(100);
             entity.HasRequired(p => p.Category).WithMany(m => m.Products).HasForeignKey(f => f.CategoryId);

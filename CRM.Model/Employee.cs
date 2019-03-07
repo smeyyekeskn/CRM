@@ -38,11 +38,10 @@ namespace CRM.Model
         public CustomerStatusType Status{ get; set; }
 
         [Display(Name = "Bölge")]
-        public Guid RegionId { get; set; }
+        public Guid? RegionId { get; set; }
+        [Display(Name = "Bölge")]
         public virtual Region Region { get; set; }
 
-        [Display(Name ="Teklif")]
-        public Guid OfferId { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
 
 

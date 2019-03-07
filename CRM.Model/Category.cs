@@ -16,8 +16,6 @@ namespace CRM.Model
         [Display(Name = "Ad")]
         public string Name { get; set; }
 
-        [Display(Name = "Ürün")]
-        public Guid ProductId { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 }

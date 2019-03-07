@@ -9,7 +9,7 @@ namespace CRM.Service.Services.Interfaces
 {
     public interface ICategoryService
     {
-        void Insert(Category entity);
+        void Insert(Category entity); 
         void Update(Category entity);
         void Delete(Category entity);
         void Delete(Guid id);
