@@ -26,6 +26,8 @@ namespace CRM.Model
         public string Phone { get; set; }
 
         [Display(Name = "Doğum Tarihi")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Birthdate { get; set; } 
 
         [Display(Name = "E-Posta")]

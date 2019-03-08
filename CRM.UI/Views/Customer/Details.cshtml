@@ -1,8 +1,11 @@
-﻿@model CRM.Model.Employee
+﻿@model CRM.Model.Customer
 
 @{
     ViewBag.Title = "Details";
 }
+
+<h2>Details</h2>
+
 <br />
 <br />
 <div class="content-page">
@@ -39,6 +42,14 @@
                         <dd>
                             @Html.DisplayFor(model => model.LastName)
                         </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Phone)
+                        </dd>
                         <dt>
                             @Html.DisplayNameFor(model => model.Region.Name)
                         </dt>
@@ -48,11 +59,11 @@
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.Phone)
+                            @Html.DisplayNameFor(model => model.Email)
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.Phone)
+                            @Html.DisplayFor(model => model.Email)
                         </dd>
 
                         <dt>
@@ -61,14 +72,6 @@
 
                         <dd>
                             @Html.DisplayFor(model => model.Birthdate)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Email)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Email)
                         </dd>
 
                         <dt>
@@ -86,13 +89,16 @@
                         <dd>
                             @Html.DisplayFor(model => model.Status)
                         </dd>
+
                     </dl>
-                    <p>
-                        @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
-                        @Html.ActionLink("Geri Dön", "Index")
-                    </p>
                 </div>
+                <p>
+                    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Geri Dön", "Index")
+                </p>
             </div>
         </div>
     </div>
 </div>
+
+
