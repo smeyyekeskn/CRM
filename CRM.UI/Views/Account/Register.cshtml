@@ -1,41 +1,155 @@
 ﻿@model CRM.UI.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
+<!doctype html>
+<html lang="en">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+    <!-- App Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- App title -->
+    <title>CRM-Sümeyye Keskin</title>
+
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="/assets/plugins/morris/morris.css">
+
+    <!-- Switchery css -->
+    <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- App CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <!-- Modernizr js -->
+    <script src="/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <div class="account-pages"></div>
+    <div class="clearfix"></div>
+    <div class="wrapper-page">
+
+        <div class="account-bg">
+            <div class="card-box mb-0">
+                <div class="text-center m-t-20">
+                    <a href="index.html" class="logo">
+                        <i class="fa fa-handshake-o"></i>
+                        <span>CRM</span>
+                    </a>
+                </div>
+                <div class="m-t-10 p-20">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h6 class="text-muted text-uppercase m-b-0 m-t-0">Kaydol</h6>
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <hr />
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Email, "E-Posta", new { @class = "col-md-4 control-label" })
+                            <div class="col-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Password, "Parola", new { @class = "col-md-4 control-label" })
+                            <div class="col-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.ConfirmPassword, "Parola Tekrar",new { @class = "col-md-4 control-label" })
+                            <div class="col-12">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox-signup" type="checkbox" checked="checked">
+                                    <label for="checkbox-signup">Üyelik sözleşmesi şartlarını okudum ve kabul ediyorum</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row text-center m-t-10">
+                            <div class="col-12">
+                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Şimdi Kaydol</button>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <!-- end card-box-->
+
+        <div class="m-t-20">
+            <div class="text-center">
+                <p class="text-white">Zaten hesabın var mı? <a href="@Url.Action("Login","Account")", class="text-white m-l-5"><b>Giriş Yap</b> </a></p>
+            </div>
+        </div>
+
+    </div>
+    <!-- end wrapper page -->
+
+
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <!-- jQuery  -->
+
+
+</body>
+</html>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/detect.js"></script>
+<script src="/assets/js/fastclick.js"></script>
+<script src="/assets/js/jquery.blockUI.js"></script>
+<script src="/assets/js/waves.js"></script>
+<script src="/assets/js/jquery.nicescroll.js"></script>
+<script src="/assets/js/jquery.scrollTo.min.js"></script>
+<script src="/assets/js/jquery.slimscroll.js"></script>
+<script src="/assets/plugins/switchery/switchery.min.js"></script>
+
+<!--Morris Chart-->
+<script src="/assets/plugins/morris/morris.min.js"></script>
+<script src="/assets/plugins/raphael/raphael-min.js"></script>
+
+<!-- Counter Up  -->
+<script src="/assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="/assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+<!-- App js -->
+<script src="/assets/js/jquery.core.js"></script>
+<script src="/assets/js/jquery.app.js"></script>
+
+<!-- Page specific js -->
+<script src="/assets/pages/jquery.dashboard.js"></script>

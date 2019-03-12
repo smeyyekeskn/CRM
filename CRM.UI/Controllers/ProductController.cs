@@ -12,9 +12,10 @@ namespace CRM.UI.Controllers
     {
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             this.productService = productService;
+            this.categoryService = categoryService;
         }
         // GET: Product
         public ActionResult Index()

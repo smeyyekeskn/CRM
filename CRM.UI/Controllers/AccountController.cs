@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CRM.UI.Models;
+using CRM.Model;
 
 namespace CRM.UI.Controllers
 {

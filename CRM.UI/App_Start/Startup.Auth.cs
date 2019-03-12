@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using CRM.UI.Models;
+using CRM.Data;
+using CRM.Model;
 
 namespace CRM.UI
 {
