@@ -27,36 +27,32 @@
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-layers float-right text-muted"></i>
-                        <h6 class="text-muted m-b-20">Siparişler</h6>
-                        <h2 class="m-b-20" data-plugin="counterup">1,587</h2>
-                        <span class="badge badge-success"> +11% </span> <span class="text-muted">Önceki dönemden itibaren</span>
+                        <h6 class="text-muted m-b-20">Sipariş Sayısı</h6>
+                        <h2 class="m-b-20" data-plugin="counterup">@ViewBag.OrderCount</h2>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-paypal float-right text-muted"></i>
-                        <h6 class="text-muted m-b-20">Gelir</h6>
-                        <h2 class="m-b-20">$<span data-plugin="counterup">46,782</span></h2>
-                        <span class="badge badge-danger"> -29% </span> <span class="text-muted">Önceki dönemden itibaren</span>
+                        <h6 class="text-muted m-b-20">Müşteri Sayısı</h6>
+                        <h2 class="m-b-20"><span data-plugin="counterup">@ViewBag.CustomerCount</span></h2>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-chart float-right text-muted"></i>
-                        <h6 class="text-muted m-b-20">Ortalama Fiyat</h6>
-                        <h2 class="m-b-20">$<span data-plugin="counterup">15.9</span></h2>
-                        <span class="badge badge-pink"> 0% </span> <span class="text-muted">Önceki dönemden itibaren</span>
+                        <h6 class="text-muted m-b-20">Personel Sayısı</h6>
+                        <h2 class="m-b-20"><span data-plugin="counterup">@ViewBag.EmployeeCount</span></h2>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-rocket float-right text-muted"></i>
-                        <h6 class="text-muted m-b-20">Satılan Ürün</h6>
-                        <h2 class="m-b-20" data-plugin="counterup">1,890</h2>
-                        <span class="badge badge-warning"> +89% </span> <span class="text-muted">Geçen yıl</span>
+                        <h6 class="text-muted m-b-20">Ürün Sayısı</h6>
+                        <h2 class="m-b-20" data-plugin="counterup">@ViewBag.ProductCount</h2>
                     </div>
                 </div>
             </div>

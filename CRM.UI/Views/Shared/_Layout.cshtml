@@ -43,7 +43,7 @@
 
             <!-- LOGO -->
             <div class="topbar-left">
-                <a href="index.html" class="logo">
+                <a href="@Url.Action("Index", "Home")" class="logo">
                     <i class="fa fa-handshake-o"></i>
                     <span>CRM</span>
                 </a>
@@ -179,11 +179,14 @@
                             </a>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item notify-item">
                                 <i class="zmdi zmdi-power"></i> <span>Logout</span>
                             </a>
 
                         </div>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class="navbar-right"})){
+                            @Html.AntiForgeryToken()
+                        }
                     </li>
 
                 </ul>
