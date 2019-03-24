@@ -69,7 +69,7 @@ namespace CRM.UI.Controllers
                 model.Email = employee.Email;
                 model.Birthdate = employee.Birthdate;
                 model.Address = employee.Address;
-                model.Status = employee.Status;
+                model.UserType = employee.UserType;
 
                 employeeService.Update(model);
                 return RedirectToAction("Index");

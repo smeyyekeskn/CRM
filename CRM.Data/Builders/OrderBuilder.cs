@@ -12,8 +12,7 @@ namespace CRM.Data.Builders
     {
         public OrderBuilder(EntityTypeConfiguration<Order> entity)
         {
-            entity.Property(p => p.Name).IsRequired();
-            entity.Property(p => p.Iban).IsRequired();
+            entity.HasOptional(e => e.Customer).WithMany(m => m.Orders).HasForeignKey(f => f.CustomerId);
             entity.HasMany<Product>(p => p.Products).WithMany(m => m.Orders).Map(em =>
             {
                 em.MapLeftKey("ProductRefId");

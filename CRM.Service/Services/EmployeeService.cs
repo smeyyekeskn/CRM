@@ -69,7 +69,7 @@ namespace CRM.Service
             employee.Email = entity.Email;
             employee.Birthdate = entity.Birthdate;
             employee.Address = entity.Address;
-            employee.Status = entity.Status;
+            employee.UserType = entity.UserType;
             employeeRepository.Update(employee);
             unitOfWork.SaveChanges();
         }

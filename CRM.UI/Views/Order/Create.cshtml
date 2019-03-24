@@ -1,0 +1,142 @@
+﻿@model CRM.Model.Order
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="content-page">
+    <!-- Start content -->
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-box">
+                    <h2>Create</h2>
+                    <br />
+                    <div class="row">
+                        <div class="form-group row">
+                            <label for="example-number-input" class="col-sm-7 col-form-label">Fatura Tarihi :</label>
+                            <label for="example-number-input" class="col-sm-5 col-form-label">@DateTime.Now.ToShortDateString()</label>
+                        </div>
+                    </div>
+                    <a href="#custom-modal" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="blur" data-plugin="custommodal"
+                       data-overlaySpeed="100" data-overlayColor="#36404a">Müşteri Ekle</a>
+                    <a href="#custom-urun" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="sign" data-plugin="custommodal"
+                       data-overlaySpeed="100" data-overlayColor="#36404a">Ürün Ekle</a>
+                    <div class="row">
+                        <div class="col-9">
+                            <table class="table" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th>Müşteri Adı</th>
+                                        <th>Ürün</th>
+                                        <th>Miktar</th>
+                                        <th>Toplam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in @ViewBag.Customers)
+                                    {
+                                        <tr>
+                                            <td>@item.IdentityNumber</td>
+                                            <td>@item.FirstName</td>
+                                            <td><input class="form-control col-md-4" type="number" /></td>
+                                            <td>@item.Status</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="custom-modal" class="modal-demo">
+                        <button type="button" class="close" onclick="Custombox.close();">
+                            <span>&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="custom-modal-title">Müşteri seçiniz</h4>
+                        <div class="custom-modal-text">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table" id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Tc Kimlik No</th>
+                                                <th>Ad</th>
+                                                <th>Soyad</th>
+                                                <th>Statü</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in @ViewBag.Customers)
+                                            {
+                                                <tr>
+                                                    <td><input type="radio" name="radio" class="radio-primary" /></td>
+                                                    <td>@item.IdentityNumber</td>
+                                                    <td>@item.FirstName</td>
+                                                    <td>@item.LastName</td>
+                                                    <td>@item.Status</td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="custom-urun" class="modal-demo">
+                    <button type="button" class="close" onclick="Custombox.close();">
+                        <span>&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="custom-modal-title">Ürün Seçiniz</h4>
+                    <div class="custom-modal-text">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Birden fazla ürün seçimi yapabilirsiniz</p>
+                                <table class="table" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Seri Numarası</th>
+                                            <th>Ürün Adı</th>
+                                            <th>Kategori</th>
+                                            <th>Alış Fiyatı</th>
+                                            <th>Stok</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in @ViewBag.Products)
+                                        {
+                                            <tr>
+                                                <td><input type="checkbox" name="check" class="checkbox-primary" /></td>
+                                                <td>@item.SerialNumber</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Category.Name</td>
+                                                <td>@item.BuyingPrice</td>
+                                                <td>@item.Stock</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

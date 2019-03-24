@@ -68,6 +68,14 @@
     <Compile Include="Migrations\201903061441113_InitialCreate.Designer.cs">
       <DependentUpon>201903061441113_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903141539113_SomeChanges.cs" />
+    <Compile Include="Migrations\201903141539113_SomeChanges.Designer.cs">
+      <DependentUpon>201903141539113_SomeChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903221348361_SomeChangesAtEmployeeEntity.cs" />
+    <Compile Include="Migrations\201903221348361_SomeChangesAtEmployeeEntity.Designer.cs">
+      <DependentUpon>201903221348361_SomeChangesAtEmployeeEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -86,6 +94,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903061441113_InitialCreate.resx">
       <DependentUpon>201903061441113_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903141539113_SomeChanges.resx">
+      <DependentUpon>201903141539113_SomeChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903221348361_SomeChangesAtEmployeeEntity.resx">
+      <DependentUpon>201903221348361_SomeChangesAtEmployeeEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,14 +13,10 @@ namespace CRM.Model
         {
             new HashSet<Product>();
         }
+       
+
         [Display(Name = "İstenen Tarih")]
-        public DateTime RequiredDate { get; set; }
-
-        [Display(Name = "Banka Adı")]
-        public string Name { get; set; }
-
-        [Display(Name = "Iban")]
-        public string Iban { get; set; }
+        public DateTime RequiredDate { get { return DateTime.Now; } }
 
         [Display(Name = "Satış Fiyatı")]
         public decimal SellingPrice { get; set; }
@@ -30,6 +26,11 @@ namespace CRM.Model
 
         [Display(Name = "Tutar")]
         public decimal Amount { get { return SellingPrice * Quantity;} }
+
+        [Display(Name = "Müşteri")]
+        public Guid? CustomerId { get; set; }
+        [Display(Name = "Müşteri")]
+        public virtual Customer Customer { get; set; }
 
         public virtual ICollection<Product>Products { get; set; }
 

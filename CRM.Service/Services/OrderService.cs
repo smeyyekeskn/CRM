@@ -51,10 +51,8 @@ namespace CRM.Service
 
         public void Update(Order entity)
         {
-            var order = orderRepository.Find(entity.Id);           
-            order.Iban = entity.Iban;
-            order.Name = entity.Name;
-            order.RequiredDate = entity.RequiredDate;
+            var order = orderRepository.Find(entity.Id);
+            order.Customer = entity.Customer;
             order.SellingPrice = entity.SellingPrice;
             order.Quantity = entity.Quantity;
             order.Products = entity.Products;

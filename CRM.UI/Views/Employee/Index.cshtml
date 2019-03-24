@@ -33,7 +33,7 @@
                                         @Html.DisplayNameFor(model => model.LastName)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Status)
+                                        @Html.DisplayNameFor(model => model.UserType)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -54,7 +54,7 @@
                                             @Html.DisplayFor(modelItem => item.LastName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Status)
+                                            @Html.DisplayFor(modelItem => item.UserType)
                                         </td>
                                         <td>
                                             <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-outline-primary waves-effect waves-light ">Düzenle</a>

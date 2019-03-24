@@ -13,6 +13,7 @@ namespace CRM.Model
         {
             new HashSet<Offer>();
             new HashSet<Product>();
+            new HashSet<Order>();
         }
         [Display(Name = "TC Kimlik No")]
         public string IdentityNumber { get; set; }
@@ -29,11 +30,16 @@ namespace CRM.Model
         [Display(Name = "E-Posta")]
         public string Email { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Doğum Tarihi")]
         public DateTime Birthdate { get; set; }
 
         [Display(Name = "Adres")]
         public string Address { get; set; }
+
+        [Display(Name = "Iban")]
+        public string Iban { get; set; }
 
         [Display(Name ="Statü")]
         public CustomerStatusType Status { get; set; }
@@ -43,6 +49,7 @@ namespace CRM.Model
         [Display(Name = "Bölge")]
         public virtual Region Region { get; set; }
 
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
     }

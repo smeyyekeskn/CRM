@@ -49,6 +49,8 @@ namespace CRM.UI.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Categories = new SelectList(categoryService.GetAll(), "Id", "Name", product.CategoryId);
             return View(product);
         }
         

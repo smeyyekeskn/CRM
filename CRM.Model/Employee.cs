@@ -37,7 +37,7 @@ namespace CRM.Model
         public string Address { get; set; }
 
         [Display(Name = "Statü")]
-        public CustomerStatusType Status{ get; set; }
+        public UserType UserType{ get; set; }
 
         [Display(Name = "Bölge")]
         public Guid? RegionId { get; set; }

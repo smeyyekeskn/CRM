@@ -13,8 +13,8 @@ namespace CRM.Model
         {
             new HashSet<Product>();
         }
-        [Display(Name = "Ad")]
-        public string Name { get; set; }
+        [Display(Name = "Kategori Adı")]
+        public string Name { get; set;}
 
         public virtual ICollection<Product> Products { get; set; }
     }

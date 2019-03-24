@@ -15,7 +15,7 @@ namespace CRM.Model
             new HashSet<Offer>();
             new HashSet<Product>();
         }
-        [Display(Name="Ad")]
+        [Display(Name="Ürün Adı")]
         public string Name { get; set; }
 
         [Display(Name = "Açıklama")]
