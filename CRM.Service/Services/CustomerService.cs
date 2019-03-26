@@ -4,6 +4,7 @@ using CRM.Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,11 @@ namespace CRM.Service
         public Customer Find(Guid id)
         {
             return customerRepository.Find(id);
+        }
+
+        public Customer Find(Expression<Func<Customer, bool>> where)
+        {
+            return customerRepository.Find(where);
         }
 
         public IEnumerable<Customer> GetAll()

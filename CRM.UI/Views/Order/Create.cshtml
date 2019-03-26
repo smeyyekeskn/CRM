@@ -1,14 +1,10 @@
 ﻿@model CRM.Model.Order
-
 @{
     ViewBag.Title = "Create";
 }
-
 <div class="content-page">
     <!-- Start content -->
-
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-12">
                 <div class="card-box">
@@ -20,34 +16,116 @@
                             <label for="example-number-input" class="col-sm-5 col-form-label">@DateTime.Now.ToShortDateString()</label>
                         </div>
                     </div>
+                    @*Modal Select Start*@
+                    <div class="row" id="selectedCustomer">
+
+                    </div>
+
+
+                    <script>
+                        //seçili müşterinin ekrana gelmesi
+                        $(document).ready(function () {
+                            $("#customerAdd").click(function () {
+
+                                var customers = [];
+                                var grid = document.getElementById("myCustomerTable");
+                                var radioBoxes = grid.getElementsByTagName("INPUT");
+                                for (var i = 0; i < radioBoxes.length; i++) {
+                                    if (radioBoxes[i].checked) {
+                                        var row = radioBoxes[i].parentNode.parentNode;
+                                        customers.push(row.cells[1].innerHTML);
+                                    }
+                                }
+
+
+                                if (customers.length > 0) {
+                                    $.ajax({
+                                        type: "post",
+                                        url: "/Order/GetCustomer",
+                                        dataType: "json",
+                                        data: { 'tc': customers },
+                                        success: function (results) {
+                                            $('#custom-modal').modal('hide');
+                                            $.each(results, function (id, c) {
+                                                var cus = '<div class="list-group col-md-6">' +
+                                                    '<div class="list-group-item list-group-item-action">' +
+                                                    '<div class="d-flex w-100 justify-content-between">' +
+                                                    '<h5 class="mb-1">' + c.FirstName + " " + c.LastName + '</h5>' +
+                                                    '</div>' +
+                                                    '<p class="mb-1">' + c.Address + '</p>' +
+                                                    '<small>' + c.IdentityNumber + '</small>' +
+                                                    '</div>' +
+                                                    '</div>';
+                                                $('#selectedCustomer').append(cus);
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                       
+                        //
+
+                        $("#productAdd").click(function () {
+
+                            var products = [];
+                            var grid = document.getElementById("myTable");
+                            var checkBoxes = grid.getElementsByTagName("INPUT");
+                            for (var i = 0; i < checkBoxes.length; i++) {
+                                if (checkBoxes[i].checked) {
+                                    var row = checkBoxes[i].parentNode.parentNode;
+                                    products.push(row.cells[1].innerHTML);
+                                }
+                            }
+
+
+                            if (products.length > 0) {
+                                $.ajax({
+                                    type: "post",
+                                    url: "/Order/GetProduct",
+                                    dataType: "json",
+                                    data: { 'serialNumber': products },
+                                    success: function (results) {
+                                        $('#custom-urun').modal('hide');
+                                        $.each(results, function (id, c) {
+                                            var cus =
+
+                                                '<tr>' +
+                                                '<td>' + c.SerialNumber + '</td>' +
+                                                '<td>' + c.Name + '</td>' +
+                                                '<td>' + c.Stock + '</td>' +
+                                                '<td>' + '<input class="form-control col-md-4" type="number" />' + '</td>' +
+                                                '<td>' + c.BuyingPrice + '</td>' +
+                                                ' </tr> ';
+                                            $('#selectedProduct').append(cus);
+                                        });
+                                    }
+                                });
+                            }
+                            });
+                        });
+                    </script>
+                    @*Modal Select End*@
+                    <br />
                     <a href="#custom-modal" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="blur" data-plugin="custommodal"
                        data-overlaySpeed="100" data-overlayColor="#36404a">Müşteri Ekle</a>
                     <a href="#custom-urun" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="sign" data-plugin="custommodal"
                        data-overlaySpeed="100" data-overlayColor="#36404a">Ürün Ekle</a>
-                    <div class="row">
+
+                    <div class="row" >
                         <div class="col-9">
-                            <table class="table" id="myTable">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Müşteri Adı</th>
-                                        <th>Ürün</th>
+                                        <th>Seri Numarası</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Stok</th>
                                         <th>Miktar</th>
-                                        <th>Toplam</th>
+                                        <th>Fiyat</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach (var item in @ViewBag.Customers)
-                                    {
-                                        <tr>
-                                            <td>@item.IdentityNumber</td>
-                                            <td>@item.FirstName</td>
-                                            <td><input class="form-control col-md-4" type="number" /></td>
-                                            <td>@item.Status</td>
-                                        </tr>
-                                    }
-
+                                <tbody id="selectedProduct">
                                 </tbody>
-                            </table>
+                                </table>
                         </div>
                     </div>
 
@@ -57,10 +135,9 @@
                         </button>
                         <h4 class="custom-modal-title">Müşteri seçiniz</h4>
                         <div class="custom-modal-text">
-
                             <div class="row">
                                 <div class="col-12">
-                                    <table class="table" id="myTable">
+                                    <table class="table" id="myCustomerTable">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -74,22 +151,20 @@
                                             @foreach (var item in @ViewBag.Customers)
                                             {
                                                 <tr>
-                                                    <td><input type="radio" name="radio" class="radio-primary" /></td>
+                                                    <td><input type="radio" name="radio" class="radio-primary" value="@item.IdentityNumber" /></td>
                                                     <td>@item.IdentityNumber</td>
                                                     <td>@item.FirstName</td>
                                                     <td>@item.LastName</td>
                                                     <td>@item.Status</td>
                                                 </tr>
                                             }
-
                                         </tbody>
                                     </table>
-                                    <button type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Kaydet</button>
+                                    <button id="customerAdd" type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Kaydet</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div id="custom-urun" class="modal-demo">
                     <button type="button" class="close" onclick="Custombox.close();">
@@ -99,7 +174,7 @@
                     <div class="custom-modal-text">
                         <div class="row">
                             <div class="col-12">
-                                <p>Birden fazla ürün seçimi yapabilirsiniz</p>
+                                <p>Birden fazla Ürün seçimi yapabilirsiniz</p>
                                 <table class="table" id="myTable">
                                     <thead>
                                         <tr>
@@ -123,10 +198,9 @@
                                                 <td>@item.Stock</td>
                                             </tr>
                                         }
-
                                     </tbody>
                                 </table>
-                                <button type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Kaydet</button>
+                                <button type="button" id="productAdd" class="btn btn-primary waves-effect waves-light" style="float:right">Kaydet</button>
                             </div>
                         </div>
                     </div>
@@ -135,8 +209,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 

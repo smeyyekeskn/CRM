@@ -4,6 +4,7 @@ using CRM.Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,11 @@ namespace CRM.Service
         public IEnumerable<Product> GetAll()
         {
             return productRepository.GetAll();
+        }
+
+        public Product Find(Expression<Func<Product, bool>> where)
+        {
+            return productRepository.Find(where);
         }
 
         public IEnumerable<Product> GetAllByName(string name)
