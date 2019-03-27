@@ -36,8 +36,6 @@
                                         customers.push(row.cells[1].innerHTML);
                                     }
                                 }
-
-
                                 if (customers.length > 0) {
                                     $.ajax({
                                         type: "post",
@@ -45,7 +43,10 @@
                                         dataType: "json",
                                         data: { 'tc': customers },
                                         success: function (results) {
-                                            $('#custom-modal').modal('hide');
+                                            $('#custom-modal').modal({
+                                                backdrop: 'static',
+                                                keyboard: false
+                                            });
                                             $.each(results, function (id, c) {
                                                 var cus = '<div class="list-group col-md-6">' +
                                                     '<div class="list-group-item list-group-item-action">' +
@@ -62,56 +63,54 @@
                                     });
                                 }
                             });
-                       
-                        //
 
-                        $("#productAdd").click(function () {
+                            //
 
-                            var products = [];
-                            var grid = document.getElementById("myTable");
-                            var checkBoxes = grid.getElementsByTagName("INPUT");
-                            for (var i = 0; i < checkBoxes.length; i++) {
-                                if (checkBoxes[i].checked) {
-                                    var row = checkBoxes[i].parentNode.parentNode;
-                                    products.push(row.cells[1].innerHTML);
-                                }
-                            }
+                            $("#productAdd").click(function () {
 
-
-                            if (products.length > 0) {
-                                $.ajax({
-                                    type: "post",
-                                    url: "/Order/GetProduct",
-                                    dataType: "json",
-                                    data: { 'serialNumber': products },
-                                    success: function (results) {
-                                        $('#custom-urun').modal('hide');
-                                        $.each(results, function (id, c) {
-                                            var cus =
-
-                                                '<tr>' +
-                                                '<td>' + c.SerialNumber + '</td>' +
-                                                '<td>' + c.Name + '</td>' +
-                                                '<td>' + c.Stock + '</td>' +
-                                                '<td>' + '<input class="form-control col-md-4" type="number" />' + '</td>' +
-                                                '<td>' + c.BuyingPrice + '</td>' +
-                                                ' </tr> ';
-                                            $('#selectedProduct').append(cus);
-                                        });
+                                var products = [];
+                                var grid = document.getElementById("myTable");
+                                var checkBoxes = grid.getElementsByTagName("INPUT");
+                                for (var i = 0; i < checkBoxes.length; i++) {
+                                    if (checkBoxes[i].checked) {
+                                        var row = checkBoxes[i].parentNode.parentNode;
+                                        products.push(row.cells[1].innerHTML);
                                     }
-                                });
-                            }
+                                }
+                                if (products.length > 0) {
+                                    $.ajax({
+                                        type: "post",
+                                        url: "/Order/GetProduct",
+                                        dataType: "json",
+                                        data: { 'serialNumber': products },
+                                        success: function (results) {
+                                            $('#custom-urun').modal('hide');
+                                            $.each(results, function (id, c) {
+                                                var cus ='<tr>' +
+                                                    '<td>' + c.SerialNumber + '</td>' +
+                                                    '<td>' + c.Name + '</td>' +
+                                                    '<td>' + c.Stock + '</td>' +
+                                                    '<td>' + '<input class="form-control col-md-4" type="number" />' + '</td>' +
+                                                    '<td>' + '<input class="form-control col-md-4" type="number" />' + '</td>' +
+                                                    '<td>' +  '</td>' +
+                                                    ' </tr> ';
+                                                $('#selectedProduct').append(cus);
+                                            });
+                                        }
+                                    });
+                                }
                             });
                         });
                     </script>
                     @*Modal Select End*@
                     <br />
+
                     <a href="#custom-modal" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="blur" data-plugin="custommodal"
                        data-overlaySpeed="100" data-overlayColor="#36404a">Müşteri Ekle</a>
                     <a href="#custom-urun" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="sign" data-plugin="custommodal"
                        data-overlaySpeed="100" data-overlayColor="#36404a">Ürün Ekle</a>
 
-                    <div class="row" >
+                    <div class="row">
                         <div class="col-9">
                             <table class="table">
                                 <thead>
@@ -120,14 +119,18 @@
                                         <th>Ürün Adı</th>
                                         <th>Stok</th>
                                         <th>Miktar</th>
-                                        <th>Fiyat</th>
+                                        <th>Satış Fiyatı</th>
+                                        <th>Toplam Fiyat</th>
                                     </tr>
                                 </thead>
-                                <tbody id="selectedProduct">
-                                </tbody>
-                                </table>
+                                <tbody id="selectedProduct"></tbody>
+                            </table>
+                            <button type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Sipariş Ver</button>
+                            <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light" style="float:right"><i class="fa fa-print"></i></a>
                         </div>
+                        
                     </div>
+                    
 
                     <div id="custom-modal" class="modal-demo">
                         <button type="button" class="close" onclick="Custombox.close();">
