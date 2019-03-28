@@ -13,7 +13,7 @@ namespace CRM.Model
         {
             new HashSet<Order>();
             new HashSet<Offer>();
-            new HashSet<Product>();
+            new HashSet<Customer>();
         }
         [Display(Name="Ürün Adı")]
         public string Name { get; set; }

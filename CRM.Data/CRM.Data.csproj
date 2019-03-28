@@ -76,6 +76,14 @@
     <Compile Include="Migrations\201903221348361_SomeChangesAtEmployeeEntity.Designer.cs">
       <DependentUpon>201903221348361_SomeChangesAtEmployeeEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903281142452_SomeChanges2.cs" />
+    <Compile Include="Migrations\201903281142452_SomeChanges2.Designer.cs">
+      <DependentUpon>201903281142452_SomeChanges2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903281158088_AddtoOrderEntity.cs" />
+    <Compile Include="Migrations\201903281158088_AddtoOrderEntity.Designer.cs">
+      <DependentUpon>201903281158088_AddtoOrderEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -100,6 +108,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903221348361_SomeChangesAtEmployeeEntity.resx">
       <DependentUpon>201903221348361_SomeChangesAtEmployeeEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281142452_SomeChanges2.resx">
+      <DependentUpon>201903281142452_SomeChanges2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281158088_AddtoOrderEntity.resx">
+      <DependentUpon>201903281158088_AddtoOrderEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

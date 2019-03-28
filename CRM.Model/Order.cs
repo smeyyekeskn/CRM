@@ -13,7 +13,16 @@ namespace CRM.Model
         {
             new HashSet<Product>();
         }
-       
+
+        [Display(Name = "Seri Numarası")]
+        public string SerialNumber { get; set; }
+
+
+        [Display(Name = "Ürün Adı")]
+        public string ProductName { get; set; }
+
+        [Display(Name = "Stok")]
+        public int Stock { get; set; }
 
         [Display(Name = "İstenen Tarih")]
         public DateTime RequiredDate { get { return DateTime.Now; } }
@@ -25,7 +34,7 @@ namespace CRM.Model
         public decimal Quantity { get; set; }
 
         [Display(Name = "Tutar")]
-        public decimal Amount { get { return SellingPrice * Quantity;} }
+        public decimal Total { get { return SellingPrice * Quantity;} }
 
         [Display(Name = "Müşteri")]
         public Guid? CustomerId { get; set; }

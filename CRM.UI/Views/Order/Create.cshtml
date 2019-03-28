@@ -24,6 +24,47 @@
 
                     <script>
                         //seçili müşterinin ekrana gelmesi
+                        function recalcProductRow(
+                        ) {
+                            var stock = parseInt($('.product-row .stock[prdindex="' + index + '"]').html());
+                            var quantity = parseInt($('.product-row .quantity[prdindex="' + index + '"]').val());
+                            var price = parseFloat($('.product-row .prc[prdindex="' + index + '"]').val());
+                            if (stock == null)
+                                stock = 0;
+                            if (price == null) {
+                                price = 0;
+                                $('.product-row .price[prdindex="' + index + '"]').val('0');
+                            }
+                            if (quantity == null) {
+                                quantity = 0;
+                                $('.product-row .quantity[prdindex="' + index + '"]').val('1');
+                            }
+
+                            stock = parseFloat(stock);
+
+                            if (stock < quantity) {
+                                $('.product-row .quantity[prdindex="' + index + '"]').val(stock);
+                                quantity = stock;
+                            }
+
+                            var total = quantity * price;
+                            if (total == null)
+                                total = 0;
+
+                            $('.product-row .total[prdindex="' + index + '"]').html(total);
+
+                            var totals = $('.product-row .total');
+                            var allTotal = parseFloat('0');
+                            $.each(totals, function (index, total_cell) {
+                                var total_cell_html = $(total_cell).html();
+                                if (total_cell_html != '') {
+                                    allTotal += parseFloat(total_cell_html);
+                                }
+                            });
+                            $('.all-total').html(allTotal.toString());
+                        }
+
+
                         $(document).ready(function () {
                             $("#customerAdd").click(function () {
 
@@ -59,9 +100,15 @@
                                                     '</div>';
                                                 $('#selectedCustomer').append(cus);
                                             });
+                                            Custombox.close();
+                                            $('.modal-backdrop').remove();
+                                            $('.custom-modal-opener').hide();
                                         }
                                     });
                                 }
+
+                                
+
                             });
 
                             //
@@ -85,29 +132,34 @@
                                         data: { 'serialNumber': products },
                                         success: function (results) {
                                             $('#custom-urun').modal('hide');
-                                            $.each(results, function (id, c) {
-                                                var cus ='<tr>' +
+                                            $.each(results, function (index, c) {
+                                                var cus ='<tr class="product-row">' +
                                                     '<td>' + c.SerialNumber + '</td>' +
                                                     '<td>' + c.Name + '</td>' +
-                                                    '<td>' + c.Stock + '</td>' +
-                                                    '<td>' + '<input class="form-control col-md-4" type="number" />' + '</td>' +
-                                                    '<td>' + '<input class="form-control col-md-4" type="number" />' + '</td>' +
-                                                    '<td>' +  '</td>' +
+                                                    '<td class="stock" prdindex="' + index + '">' + c.Stock + '</td>' +
+                                                    '<td>' + '<input onchange="recalcProductRow('+index+');" class="quantity" prdindex="' + index + '" class="form-control col-md-4" type="number" value="1" />' + '</td>' +
+                                                    '<td>' + '<input onchange="recalcProductRow(' + index +');" class="prc" prdindex="' + index + '" class="form-control col-md-4" type="number" value="0" />' + '</td>' +
+                                                    '<td class="total" prdindex="' + index + '">0' +  '</td>' +
                                                     ' </tr> ';
                                                 $('#selectedProduct').append(cus);
                                             });
+                                            $('#selectedProduct').append('<tr><td colspan="4"></td><td>TOPLAM</td><td class="all-total">0</td></tr>');
                                         }
                                     });
                                 }
+                                Custombox.close();
+                                $('.modal-backdrop').remove();
+                                $('.custom-urun-opener').hide();
+
                             });
                         });
                     </script>
                     @*Modal Select End*@
                     <br />
 
-                    <a href="#custom-modal" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="blur" data-plugin="custommodal"
+                    <a href="#custom-modal"  class="btn btn-primary waves-effect waves-light m-r-5 m-b-10 custom-modal-opener" data-animation="blur" data-plugin="custommodal"
                        data-overlaySpeed="100" data-overlayColor="#36404a">Müşteri Ekle</a>
-                    <a href="#custom-urun" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10" data-animation="sign" data-plugin="custommodal"
+                    <a href="#custom-urun" class="btn btn-primary waves-effect waves-light m-r-5 m-b-10 custom-urun-opener" data-animation="sign" data-plugin="custommodal"
                        data-overlaySpeed="100" data-overlayColor="#36404a">Ürün Ekle</a>
 
                     <div class="row">
