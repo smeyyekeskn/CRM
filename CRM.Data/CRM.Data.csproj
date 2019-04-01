@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201903281158088_AddtoOrderEntity.Designer.cs">
       <DependentUpon>201903281158088_AddtoOrderEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903301958028_OrderNumberFieldtoOrderEntity.cs" />
+    <Compile Include="Migrations\201903301958028_OrderNumberFieldtoOrderEntity.Designer.cs">
+      <DependentUpon>201903301958028_OrderNumberFieldtoOrderEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903281158088_AddtoOrderEntity.resx">
       <DependentUpon>201903281158088_AddtoOrderEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903301958028_OrderNumberFieldtoOrderEntity.resx">
+      <DependentUpon>201903301958028_OrderNumberFieldtoOrderEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

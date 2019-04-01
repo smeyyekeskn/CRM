@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRM.Model.Order>
+﻿@model List<CRM.UI.ViewModel.OrderViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -20,13 +20,13 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Customer.FirstName)
+                                    FullName
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RequiredDate)
+                                    RequiredDate
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.SellingPrice)
+                                    SellingPrice
                                 </th>
                                 <th></th>
                             </tr>
@@ -34,22 +34,22 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.RequiredDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SellingPrice)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-outline-primary waves-effect waves-light ">Düzenle</a>
-                                    <a href="@Url.Action("Delete", new { id = item.Id})" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
-                                    <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-outline-success waves-effect waves-light">Detaylar</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RequiredDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SellingPrice)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-outline-primary waves-effect waves-light ">Düzenle</a>
+                                        <a href="@Url.Action("Delete", new { id = item.Id})" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
+                                        <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-outline-success waves-effect waves-light">Detaylar</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
 
