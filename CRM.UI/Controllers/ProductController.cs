@@ -63,7 +63,7 @@ namespace CRM.UI.Controllers
                 var model = productService.Find(product.Id);
                 model.Name = product.Name;
                 model.Offers = product.Offers;
-                model.Orders = product.Orders;
+                model.OrderItems = product.OrderItems;
                 model.SerialNumber = product.SerialNumber;
                 model.Stock = product.Stock;
                 model.CategoryId = product.CategoryId;

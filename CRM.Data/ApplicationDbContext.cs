@@ -37,7 +37,7 @@ namespace CRM.Data
             new OfferBuilder(modelBuilder.Entity<Offer>());
             new ProductBuilder(modelBuilder.Entity<Product>());
             new RegionBuilder(modelBuilder.Entity<Region>());
-            new OrderBuilder(modelBuilder.Entity<Order>());
+            new OrderItemBuilder(modelBuilder.Entity<OrderItem>());
         }
         
     }

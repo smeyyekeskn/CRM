@@ -11,9 +11,9 @@ namespace CRM.Model
     {
         public Product()
         {
-            new HashSet<Order>();
-            new HashSet<Offer>();
-            new HashSet<Customer>();
+            Offers = new HashSet<Offer>();
+            Customers = new HashSet<Customer>();
+            OrderItems = new HashSet<OrderItem>();
         }
         [Display(Name="Ürün Adı")]
         public string Name { get; set; }
@@ -34,7 +34,7 @@ namespace CRM.Model
         public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
     }

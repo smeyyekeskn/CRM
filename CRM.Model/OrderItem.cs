@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Model
 {
-    public class OrderItem
+    public class OrderItem:BaseEntity
     {
         [Display(Name = "Seri Numarası")]
         public string SerialNumber { get; set; }
@@ -38,10 +38,10 @@ namespace CRM.Model
         [Display(Name = "Müşteri")]
         public virtual Customer Customer { get; set; }
 
-        public Guid ProductId { get; set; }
+        public Guid? ProductId { get; set; }
         public Product Product { get; set; }
 
-        public Guid OrderId { get; set; }
+        public Guid? OrderId { get; set; }
         public Order Order { get; set; }
     }
 }

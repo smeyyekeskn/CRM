@@ -52,10 +52,7 @@ namespace CRM.Service
         public void Update(Order entity)
         {
             var order = orderRepository.Find(entity.Id);
-            order.Customer = entity.Customer;
-            order.SellingPrice = entity.SellingPrice;
-            order.Quantity = entity.Quantity;
-            order.Products = entity.Products;
+            order.OrderItems = entity.OrderItems;
             orderRepository.Update(order);
             unitOfWork.SaveChanges();
         }

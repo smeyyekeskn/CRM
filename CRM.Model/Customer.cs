@@ -11,9 +11,9 @@ namespace CRM.Model
     {
         public Customer()
         {
-            new HashSet<Offer>();
-            new HashSet<Product>();
-            new HashSet<Order>();
+            Offers = new HashSet<Offer>();
+            Products = new HashSet<Product>();
+            OrderItems = new HashSet<OrderItem>();
         }
         [Display(Name = "TC Kimlik No")]
         public string IdentityNumber { get; set; }
@@ -49,7 +49,7 @@ namespace CRM.Model
         [Display(Name = "Bölge")]
         public virtual Region Region { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
     }

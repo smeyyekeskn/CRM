@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using CRM.Data;
 using CRM.Model;
 using CRM.Service;
+using CRM.Service.Services;
 using CRM.Service.Services.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -61,6 +62,7 @@ namespace CRM.UI
             builder.RegisterType(typeof(OrderService)).As(typeof(IOrderService)).InstancePerDependency();
             builder.RegisterType(typeof(ProductService)).As(typeof(IProductService)).InstancePerDependency();
             builder.RegisterType(typeof(RegionService)).As(typeof(IRegionService)).InstancePerDependency();
+            builder.RegisterType(typeof(OrderItemService)).As(typeof(IOrderItemService)).InstancePerDependency();
 
 
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
