@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRM.Model.Order>
+﻿@model IEnumerable<CRM.Model.Offer>
 
 @{
     ViewBag.Title = "Index";
@@ -14,7 +14,7 @@
                 <div class="card-box">
                     <p>
                         <br />
-                        <a href="@Url.Action("Create")" class="btn btn-custom waves-effect waves-light ">Yeni Sipariş Ekle</a>
+                        <a href="@Url.Action("Create")" class="btn btn-custom waves-effect waves-light ">Yeni Teklif Ekle</a>
                     </p>
                     <table id="myTable" class="table">
                         <thead>
@@ -33,23 +33,23 @@
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
-                                        {
-                                            var items = item.OrderItems.Select(s => new { FirstName = s.Customer.FirstName, OrderId = s.OrderId }).Distinct().ToList();
-                                            foreach (var item2 in items)
-                                            {
+                            {
+                                var items = item.OfferItems.Select(s => new { FirstName = s.Customer.FirstName, OfferId = s.OfferId }).Distinct().ToList();
+                                foreach (var item2 in items)
+                                {
                                     <tr>
                                         <td>
                                             @item2.FirstName
                                         </td>
                                         <td>
-                                            @item.OrderItems.FirstOrDefault().RegisterRequiredDate
+                                            @item.OfferItems.FirstOrDefault().RegisterRequiredDate
                                         </td>
                                         <td>
-                                            @item.OrderItems.Sum(s => s.Total)
+                                            @item.OfferItems.Sum(s => s.Total)
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Delete", new { id = item2.OrderId})" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
-                                            <a href="@Url.Action("Details", new { id = item2.OrderId})" class="btn btn-outline-success waves-effect waves-light">Detaylar</a>
+                                            <a href="@Url.Action("Delete", new { id = item2.OfferId})" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
+                                            <a href="@Url.Action("Details", new { id = item2.OfferId})" class="btn btn-outline-success waves-effect waves-light">Detaylar</a>
                                         </td>
                                     </tr>
                                 }

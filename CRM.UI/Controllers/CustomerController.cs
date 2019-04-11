@@ -65,7 +65,7 @@ namespace CRM.UI.Controllers
                 model.IdentityNumber = customer.IdentityNumber;
                 model.FirstName = customer.FirstName;
                 model.LastName = customer.LastName;
-                model.Offers = customer.Offers;
+                model.OfferItems = customer.OfferItems;
                 model.Phone = customer.Phone;
                 model.Products = customer.Products;
                 model.RegionId = customer.RegionId;

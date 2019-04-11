@@ -62,7 +62,7 @@ namespace CRM.UI.Controllers
                 var model = employeeService.Find(employee.Id);
                 model.FirstName = employee.FirstName;
                 model.LastName = employee.LastName;
-                model.Offers = employee.Offers;
+                model.OfferItems = employee.OfferItems;
                 model.Phone = employee.Phone;
                 model.RegionId = employee.RegionId;
                 model.IdentityNumber = employee.IdentityNumber;

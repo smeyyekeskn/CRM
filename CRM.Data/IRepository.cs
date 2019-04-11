@@ -13,9 +13,12 @@ namespace CRM.Data
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);
+
         T Find(Guid id);
         T Find(Expression<Func<T, bool>> where);
+        
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAll(Expression<Func<T, bool>> where);
+        IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
     }
 }

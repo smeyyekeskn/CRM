@@ -23,7 +23,7 @@ namespace CRM.Data
         {
             entities.Remove(entity);
         }
-
+        
         public T Find(Guid id)
         {
             return entities.FirstOrDefault(f => f.Id == id);
@@ -43,6 +43,12 @@ namespace CRM.Data
         {
             return entities.Where(where).ToList();
         }
+
+        public IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        {
+            return entities.Where(where).ToList();
+        }
+
 
         public void Insert(T entity)
         {

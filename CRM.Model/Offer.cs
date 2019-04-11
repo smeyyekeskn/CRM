@@ -11,22 +11,8 @@ namespace CRM.Model
     {
         public Offer()
         {
-            new HashSet<Product>();
+            OfferItems = new HashSet<OfferItem>();
         }
-        [Display(Name ="Açıklama")]
-        public string Description { get; set; }
-
-        [Display(Name ="Teklif Fiyatı")]
-        public string Amount { get; set; }
-
-        [Display(Name = "Müşteri")]
-        public Guid CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
-
-        [Display(Name = "Çalışan")]
-        public Guid EmployeeId { get; set; }
-        public virtual Employee Employee{ get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<OfferItem> OfferItems { get; set; }
     }
 }

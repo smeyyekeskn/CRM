@@ -1,0 +1,125 @@
+﻿@model IEnumerable<CRM.Model.OrderItem>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<br />
+<br />
+<div class="content-page">
+    <!-- Start content -->
+
+    <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(item => item.Customer.IdentityNumber)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.Customer.IdentityNumber)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.Order.CreatedBy)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.Order.CreatedBy)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.Product.Name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.Product.Name)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.SerialNumber)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.SerialNumber)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.ProductName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.ProductName)
+                            </dd>
+
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.RegisterRequiredDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.RegisterRequiredDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.SellingPrice)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.SellingPrice)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.Quantity)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.Quantity)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.CreatedBy)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.CreatedBy)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.CreatedAt)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.CreatedAt)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.UpdatedBy)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.UpdatedBy)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(item => item.UpdatedAt)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(item => item.UpdatedAt)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                </div>
+            </div>
+        
+    </div>
+</div>

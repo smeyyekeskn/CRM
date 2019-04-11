@@ -69,7 +69,7 @@ namespace CRM.Service
             customer.FirstName = entity.FirstName;
             customer.LastName = entity.LastName;
             customer.IdentityNumber = entity.IdentityNumber;
-            customer.Offers = entity.Offers;
+            customer.OfferItems = entity.OfferItems;
             customer.Phone = entity.Phone;
             customer.RegionId = entity.RegionId;
             customer.Email = entity.Email;

@@ -10,14 +10,19 @@ namespace CRM.Service.Services.Interfaces
 {
     public interface IOrderItemService
     {
-        void Insert(OrderItem entity);
-        void Update(OrderItem entity);
-        void Delete(OrderItem entity);
-        void Delete(Guid id);
+        void Insert(OrderItem entity);//
+        void Update(OrderItem entity);//
+        void Delete(OrderItem entity);//
+        void Delete(Guid id);//
+
+
         OrderItem Find(Guid id);
         OrderItem Find(Expression<Func<OrderItem, bool>> where);
+
+
         IEnumerable<OrderItem> GetAll();
         IEnumerable<OrderItem> GetAllByName(string name);
-        IEnumerable<OrderItem> Search(string name);
+        IEnumerable<OrderItem> GetMany(Expression<Func<OrderItem, bool>> where);
+        IEnumerable<OrderItem> Search(string name);//
     }
 }

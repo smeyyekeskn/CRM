@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace CRM.Model
 {
-    public class OrderItem:BaseEntity
+    public class OfferItem : BaseEntity
     {
         [Display(Name = "Seri Numarası")]
         public string SerialNumber { get; set; }
-
 
         [Display(Name = "Ürün Adı")]
         public string ProductName { get; set; }
@@ -22,15 +21,14 @@ namespace CRM.Model
         [Display(Name = "Kayıtlı Tarih")]
         public DateTime RegisterRequiredDate { get; set; }
 
-        [Display(Name = "Satış Fiyatı")]
-        public decimal SellingPrice { get; set; }
+        [Display(Name = "Teklif Fiyatı")]
+        public decimal OfferPrice { get; set; }
 
         [Display(Name = "Miktar")]
         public decimal Quantity { get; set; }
 
         [Display(Name = "Tutar")]
-        public decimal Total { get { return SellingPrice * Quantity; } }
-        
+        public decimal Total { get { return OfferPrice * Quantity; } }
 
         [Display(Name = "Müşteri")]
         public Guid? CustomerId { get; set; }
@@ -40,7 +38,7 @@ namespace CRM.Model
         public Guid? ProductId { get; set; }
         public Product Product { get; set; }
 
-        public Guid? OrderId { get; set; }
-        public Order Order { get; set; }
+        public Guid? OfferId { get; set; }
+        public Offer Offer { get; set; }
     }
 }

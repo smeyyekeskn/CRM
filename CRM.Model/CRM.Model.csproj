@@ -61,6 +61,7 @@
     <Compile Include="CustomerStatusType.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Offer.cs" />
+    <Compile Include="OfferItem.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
     <Compile Include="Product.cs" />

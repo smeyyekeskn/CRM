@@ -11,7 +11,7 @@ namespace CRM.Model
     {
         public Employee()
         {
-            new HashSet<Offer>();
+            OfferItems = new HashSet<OfferItem>();
         }
         [Display(Name ="TC Kimlik No")]
         public string IdentityNumber { get; set; }
@@ -44,7 +44,7 @@ namespace CRM.Model
         [Display(Name = "Bölge")]
         public virtual Region Region { get; set; }
 
-        public virtual ICollection<Offer> Offers { get; set; }
+        public virtual ICollection<OfferItem> OfferItems { get; set; }
 
 
     }

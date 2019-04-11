@@ -10,26 +10,26 @@ using System.Web.Mvc;
 
 namespace CRM.UI.Controllers
 {
-    public class OrderController : Controller
+    public class OfferController:Controller
     {
-        private readonly IOrderService orderService;
+        private readonly IOfferService offerService;
         private readonly ICustomerService customerService;
         private readonly IProductService productService;
-        private readonly IOrderItemService orderItemService;
+        private readonly IOfferItemService offerItemService;
 
-        public OrderController(IOrderService orderService, ICustomerService customerService, IProductService productService, IOrderItemService orderItemService)
+        public OfferController(IOfferService offerService, ICustomerService customerService, IProductService productService, IOfferItemService offerItemService)
         {
-            this.orderService = orderService;
+            this.offerService = offerService;
             this.productService = productService;
             this.customerService = customerService;
-            this.orderItemService = orderItemService;
+            this.offerItemService = offerItemService;
 
         }
         // GET: Order
         public ActionResult Index()
         {
-            var orders = orderService.GetAll();
-            return View(orders);
+            var offers = offerService.GetAll();
+            return View(offers);
         }
         public ActionResult Create()
         {
@@ -41,17 +41,18 @@ namespace CRM.UI.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            var orders = orderItemService.GetMany(d => d.OrderId==id);
+            var offers = offerItemService.GetMany(d => d.OfferId == id);
 
-            foreach(var item in orders)
+            foreach (var item in offers)
             {
-                orderItemService.Delete(item);
+                offerItemService.Delete(item);
             }
 
-            orderService.Delete(id);
+            offerService.Delete(id);
 
             return RedirectToAction("Index");
         }
+
         public JsonResult GetCustomer(string tc)
         {
             List<Customer> results = new List<Customer>();
@@ -76,46 +77,38 @@ namespace CRM.UI.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddOrder(IList<OrderItemViewModel> orderItemViewModels, string tc)
+        public JsonResult AddOffer(IList<OfferItemViewModel> offerItemViewModels, string tc)
         {
             var customerId = customerService.Find(c => c.IdentityNumber == tc).Id;
 
 
             var productList = new List<Product>();
-            var newOrder = new Order();
-            orderService.Insert(newOrder);
+            var newOffer = new Offer();
+            offerService.Insert(newOffer);
 
-            foreach (var product in orderItemViewModels)
+            foreach (var product in offerItemViewModels)
             {
                 var pr = productService.Find(p => p.SerialNumber == product.SerialNumber);
 
-                var newOrderItem = new OrderItem()
+                var newOfferItem = new OfferItem()
                 {
                     SerialNumber = pr.SerialNumber,
                     ProductName = pr.Name,
-                    SellingPrice = product.SellingPrice,
+                    OfferPrice = product.OfferPrice,
                     Quantity = product.Quantity,
                     Stock = pr.Stock,
                     RegisterRequiredDate = product.RegisterRequiredDate,
                     ProductId = pr.Id,
                     CustomerId = customerId,
-                    OrderId = newOrder.Id
+                    OfferId = newOffer.Id
                 };
 
-                orderItemService.Insert(newOrderItem);
-                var proUp = productService.Find(p => p.SerialNumber == product.SerialNumber);
-                proUp.Stock -= product.Quantity;
-                productService.Update(proUp);
+                offerItemService.Insert(newOfferItem);
 
             }
 
 
             return Json("success");
-        }
-
-        public ActionResult Details(Guid id)
-        {
-            return View(orderItemService.GetMany(g => g.OrderId == id));
         }
     }
 }

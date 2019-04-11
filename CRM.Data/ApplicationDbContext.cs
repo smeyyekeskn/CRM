@@ -27,6 +27,9 @@ namespace CRM.Data
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<OfferItem> OfferItems { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,10 +37,10 @@ namespace CRM.Data
             new CustomerBuilder(modelBuilder.Entity<Customer>());
             new CategoryBuilder(modelBuilder.Entity<Category>());
             new EmployeeBuilder(modelBuilder.Entity<Employee>());
-            new OfferBuilder(modelBuilder.Entity<Offer>());
             new ProductBuilder(modelBuilder.Entity<Product>());
             new RegionBuilder(modelBuilder.Entity<Region>());
             new OrderItemBuilder(modelBuilder.Entity<OrderItem>());
+            new OfferItemBuilder(modelBuilder.Entity<OfferItem>());
         }
         
     }

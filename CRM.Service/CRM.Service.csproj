@@ -47,11 +47,13 @@
     <Compile Include="Services\Interfaces\ICategoryService.cs" />
     <Compile Include="Services\Interfaces\ICustomerService.cs" />
     <Compile Include="Services\Interfaces\IEmployeeService.cs" />
+    <Compile Include="Services\Interfaces\IOfferItemService.cs" />
     <Compile Include="Services\Interfaces\IOfferService.cs" />
     <Compile Include="Services\Interfaces\IOrderItemService.cs" />
     <Compile Include="Services\Interfaces\IOrderService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
     <Compile Include="Services\Interfaces\IRegionService.cs" />
+    <Compile Include="Services\OfferItemService.cs" />
     <Compile Include="Services\OfferService.cs" />
     <Compile Include="Services\OrderItemService.cs" />
     <Compile Include="Services\OrderService.cs" />

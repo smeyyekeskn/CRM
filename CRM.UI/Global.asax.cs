@@ -63,6 +63,7 @@ namespace CRM.UI
             builder.RegisterType(typeof(ProductService)).As(typeof(IProductService)).InstancePerDependency();
             builder.RegisterType(typeof(RegionService)).As(typeof(IRegionService)).InstancePerDependency();
             builder.RegisterType(typeof(OrderItemService)).As(typeof(IOrderItemService)).InstancePerDependency();
+            builder.RegisterType(typeof(OfferItemService)).As(typeof(IOfferItemService)).InstancePerDependency();
 
 
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();

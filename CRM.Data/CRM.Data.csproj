@@ -58,7 +58,7 @@
     <Compile Include="Builders\CategoryBuilder.cs" />
     <Compile Include="Builders\CustomerBuilder.cs" />
     <Compile Include="Builders\EmployeeBuilder.cs" />
-    <Compile Include="Builders\OfferBuilder.cs" />
+    <Compile Include="Builders\OfferItemBuilder.cs" />
     <Compile Include="Builders\OrderItemBuilder.cs" />
     <Compile Include="Builders\ProductBuilder.cs" />
     <Compile Include="Builders\RegionBuilder.cs" />
@@ -91,6 +91,18 @@
     <Compile Include="Migrations\201904031434313_CreateOrderItemEntity.cs" />
     <Compile Include="Migrations\201904031434313_CreateOrderItemEntity.Designer.cs">
       <DependentUpon>201904031434313_CreateOrderItemEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904071204313_CreateSomeEntities.cs" />
+    <Compile Include="Migrations\201904071204313_CreateSomeEntities.Designer.cs">
+      <DependentUpon>201904071204313_CreateSomeEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904111022263_AddOrderItemDateProp.cs" />
+    <Compile Include="Migrations\201904111022263_AddOrderItemDateProp.Designer.cs">
+      <DependentUpon>201904111022263_AddOrderItemDateProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904111600403_AddOfferItemDateProp.cs" />
+    <Compile Include="Migrations\201904111600403_AddOfferItemDateProp.Designer.cs">
+      <DependentUpon>201904111600403_AddOfferItemDateProp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +140,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904031434313_CreateOrderItemEntity.resx">
       <DependentUpon>201904031434313_CreateOrderItemEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904071204313_CreateSomeEntities.resx">
+      <DependentUpon>201904071204313_CreateSomeEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111022263_AddOrderItemDateProp.resx">
+      <DependentUpon>201904111022263_AddOrderItemDateProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111600403_AddOfferItemDateProp.resx">
+      <DependentUpon>201904111600403_AddOfferItemDateProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

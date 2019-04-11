@@ -69,7 +69,7 @@ namespace CRM.Service
             product.Name = entity.Name;
             product.CategoryId = entity.CategoryId;
             product.Customers = entity.Customers;
-            product.Offers = entity.Offers;
+            product.OfferItems = entity.OfferItems;
             product.Description = entity.Description;
             product.SerialNumber = entity.SerialNumber;
             product.Stock = entity.Stock;
