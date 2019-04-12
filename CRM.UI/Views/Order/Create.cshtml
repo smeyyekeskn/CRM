@@ -169,6 +169,11 @@
                                         if (results == "success") {
 
                                             alert('Siparişiniz eklendi');
+                                            window.location.href = '@Url.Action("Index", "Order")'
+                                        }
+                                        else
+                                        {
+                                            alert('Siparişiniz eklenmedi.');
                                         }
                                     }
                                 });
@@ -196,8 +201,8 @@
                                 </thead>
                                 <tbody id="selectedProduct"></tbody>
                             </table>
-                            <button id="order-add" type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Siparis Ver</button>
-                            <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light" style="float:right"><i class="fa fa-print"></i></a>
+                       <button id="order-add" type="button" class="btn btn-primary waves-effect waves-light" style="float:right">Sipariş Ver</button>
+                       <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light" style="float:right"><i class="fa fa-print"></i></a>
                         </div>
                     </div>
                     <div id="custom-modal" class="modal-demo">

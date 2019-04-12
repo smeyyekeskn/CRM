@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace CRM.UI.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IOrderService orderService;
@@ -78,39 +79,46 @@ namespace CRM.UI.Controllers
         [HttpPost]
         public JsonResult AddOrder(IList<OrderItemViewModel> orderItemViewModels, string tc)
         {
-            var customerId = customerService.Find(c => c.IdentityNumber == tc).Id;
-
-
-            var productList = new List<Product>();
-            var newOrder = new Order();
-            orderService.Insert(newOrder);
-
-            foreach (var product in orderItemViewModels)
+            try
             {
-                var pr = productService.Find(p => p.SerialNumber == product.SerialNumber);
+                var customerId = customerService.Find(c => c.IdentityNumber == tc).Id;                
+                var productList = new List<Product>();
+                var newOrder = new Order();
+                orderService.Insert(newOrder);
+                foreach (var product in orderItemViewModels)                {
+                    var pr = productService.Find(p => p.SerialNumber == product.SerialNumber);
+                    var newOrderItem = new OrderItem()
+                    {
+                        SerialNumber = pr.SerialNumber,
+                        ProductName = pr.Name,
+                        SellingPrice = product.SellingPrice,
+                        Quantity = product.Quantity,
+                        Stock = pr.Stock,
+                        RegisterRequiredDate = product.RegisterRequiredDate,
+                        ProductId = pr.Id,
+                        CustomerId = customerId,
+                        OrderId = newOrder.Id
+                    };
 
-                var newOrderItem = new OrderItem()
-                {
-                    SerialNumber = pr.SerialNumber,
-                    ProductName = pr.Name,
-                    SellingPrice = product.SellingPrice,
-                    Quantity = product.Quantity,
-                    Stock = pr.Stock,
-                    RegisterRequiredDate = product.RegisterRequiredDate,
-                    ProductId = pr.Id,
-                    CustomerId = customerId,
-                    OrderId = newOrder.Id
-                };
+                    orderItemService.Insert(newOrderItem);
+                    var proUp = productService.Find(p => p.SerialNumber == product.SerialNumber);
+                    proUp.Stock -= product.Quantity;
+                    productService.Update(proUp);
 
-                orderItemService.Insert(newOrderItem);
-                var proUp = productService.Find(p => p.SerialNumber == product.SerialNumber);
-                proUp.Stock -= product.Quantity;
-                productService.Update(proUp);
+                }
+
+
+                return Json("success");
 
             }
+            catch (Exception)
+            {
 
+                return null;
+            }
 
-            return Json("success");
+          
+         
         }
 
         public ActionResult Details(Guid id)

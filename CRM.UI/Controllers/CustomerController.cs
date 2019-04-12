@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace CRM.UI.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;

@@ -10,7 +10,8 @@ using System.Web.Mvc;
 
 namespace CRM.UI.Controllers
 {
-    public class OfferController:Controller
+    [Authorize]
+    public class OfferController : Controller
     {
         private readonly IOfferService offerService;
         private readonly ICustomerService customerService;
@@ -52,6 +53,10 @@ namespace CRM.UI.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult Details(Guid id)
+        {
+            return View(offerItemService.GetMany(g => g.OfferId == id));
+        }
 
         public JsonResult GetCustomer(string tc)
         {
@@ -79,36 +84,43 @@ namespace CRM.UI.Controllers
         [HttpPost]
         public JsonResult AddOffer(IList<OfferItemViewModel> offerItemViewModels, string tc)
         {
-            var customerId = customerService.Find(c => c.IdentityNumber == tc).Id;
-
-
-            var productList = new List<Product>();
-            var newOffer = new Offer();
-            offerService.Insert(newOffer);
-
-            foreach (var product in offerItemViewModels)
+            try
             {
-                var pr = productService.Find(p => p.SerialNumber == product.SerialNumber);
+                var customerId = customerService.Find(c => c.IdentityNumber == tc).Id;
 
-                var newOfferItem = new OfferItem()
+
+                var productList = new List<Product>();
+                var newOffer = new Offer();
+                offerService.Insert(newOffer);
+
+                foreach (var product in offerItemViewModels)
                 {
-                    SerialNumber = pr.SerialNumber,
-                    ProductName = pr.Name,
-                    OfferPrice = product.OfferPrice,
-                    Quantity = product.Quantity,
-                    Stock = pr.Stock,
-                    RegisterRequiredDate = product.RegisterRequiredDate,
-                    ProductId = pr.Id,
-                    CustomerId = customerId,
-                    OfferId = newOffer.Id
-                };
+                    var pr = productService.Find(p => p.SerialNumber == product.SerialNumber);
 
-                offerItemService.Insert(newOfferItem);
+                    var newOfferItem = new OfferItem()
+                    {
+                        SerialNumber = pr.SerialNumber,
+                        ProductName = pr.Name,
+                        OfferPrice = product.OfferPrice,
+                        Quantity = product.Quantity,
+                        Stock = pr.Stock,
+                        RegisterRequiredDate = product.RegisterRequiredDate,
+                        ProductId = pr.Id,
+                        CustomerId = customerId,
+                        OfferId = newOffer.Id
+                    };
 
+                    offerItemService.Insert(newOfferItem);
+
+                }
+
+
+                return Json("success");
             }
-
-
-            return Json("success");
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

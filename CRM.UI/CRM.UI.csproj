@@ -2683,6 +2683,7 @@
     <Content Include="Views\Offer\Index.cshtml" />
     <Content Include="Views\Offer\Create.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Offer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

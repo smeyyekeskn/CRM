@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CRM.UI.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService productService;

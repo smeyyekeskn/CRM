@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRM.Model.OrderItem>
+﻿@model IEnumerable<CRM.Model.OfferItem>
 
 @{
     ViewBag.Title = "Details";
@@ -42,10 +42,10 @@
                                 @item.RegisterRequiredDate
                             </dd>
                             <dt>
-                                @Html.DisplayNameFor(x => x.SellingPrice)
+                                @Html.DisplayNameFor(x => x.OfferPrice)
                             </dt>
                             <dd>
-                                @item.SellingPrice
+                                @item.OfferPrice
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(x => x.Quantity)
